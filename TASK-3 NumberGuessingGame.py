@@ -1,6 +1,6 @@
 import tkinter as tk
 import random
-
+ 
 def start_game():
     global secret_number, attempts_left
     secret_number = random.randint(1, 100)
