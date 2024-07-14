@@ -1,7 +1,6 @@
 import tkinter as tk
 import random
 
-# Function to start/restart the game
 def start_game():
     global secret_number, attempts_left
     secret_number = random.randint(1, 100)
@@ -13,7 +12,6 @@ def start_game():
     guess_button.config(state=tk.NORMAL)
     restart_button.config(state=tk.DISABLED)
 
-# Function to check the player's guess
 def check_guess():
     global attempts_left
     try:
@@ -41,46 +39,43 @@ def check_guess():
         feedback_label.config(text="Please enter a valid number")
     guess_entry.delete(0, tk.END)
 
-# Create the main window
+
 root = tk.Tk()
 root.title("Number Guessing Game")
 root.geometry("400x500")
 root.configure(bg='#333333')
 
-# Title label
+
 title_label = tk.Label(root, text="Number Guessing Game", font=('Helvetica', 18, 'bold'), bg='#333333', fg='#ffffff')
 title_label.pack(pady=10)
 
-# Feedback label
+
 feedback_label = tk.Label(root, text="Guess a number between 1 and 100", font=('Helvetica', 14), bg='#333333', fg='#ffcccc')
 feedback_label.pack(pady=10)
 
-# Attempts label
 attempts_label = tk.Label(root, text="Attempts left: 10", font=('Helvetica', 14), bg='#333333', fg='#ffcccc')
 attempts_label.pack(pady=5)
 
-# Entry for guessing
+
 guess_entry = tk.Entry(root, font=('Helvetica', 14), borderwidth=2, relief='solid')
 guess_entry.pack(pady=10)
 
-# Button to submit the guess
+
 guess_button = tk.Button(root, text="Submit Guess", command=check_guess, bg='#ff9999', fg='#ffffff', font=('Helvetica', 14, 'bold'), borderwidth=2, relief='raised')
 guess_button.pack(pady=5)
 
-# Button to restart the game
+
 restart_button = tk.Button(root, text="Restart Game", command=start_game, bg='#66cc66', fg='#ffffff', font=('Helvetica', 14, 'bold'), borderwidth=2, relief='raised', state=tk.DISABLED)
 restart_button.pack(pady=5)
 
-# Unique Feature: Adding a Quit Button
 def quit_game():
     root.destroy()
 
 quit_button = tk.Button(root, text="Quit Game", command=quit_game, bg='#9999ff', fg='#ffffff', font=('Helvetica', 14, 'bold'), borderwidth=2, relief='raised')
 quit_button.pack(pady=5)
 
-# Start the game initially
 start_game()
 
-# Run the application
+
 root.mainloop()
 
