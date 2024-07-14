@@ -17,13 +17,13 @@ def start_game():
 def check_guess():
     global attempts_left
     try:
-        guess = int(guess_entry.get())
-        if guess < 1 or guess > 100:
+        player_guess = int(guess_entry.get())
+        if player_guess < 1 or player_guess > 100:
             feedback_label.config(text="Please enter a number between 1 and 100")
-        elif guess < secret_number:
+        elif player_guess < secret_number:
             attempts_left -= 1
             feedback_label.config(text="Too low!")
-        elif guess > secret_number:
+        elif player_guess > secret_number:
             attempts_left -= 1
             feedback_label.config(text="Too high!")
         else:
@@ -44,7 +44,7 @@ def check_guess():
 # Create the main window
 root = tk.Tk()
 root.title("Number Guessing Game")
-root.geometry("400x300")
+root.geometry("400x500")
 root.configure(bg='#333333')
 
 # Title label
@@ -71,8 +71,16 @@ guess_button.pack(pady=5)
 restart_button = tk.Button(root, text="Restart Game", command=start_game, bg='#66cc66', fg='#ffffff', font=('Helvetica', 14, 'bold'), borderwidth=2, relief='raised', state=tk.DISABLED)
 restart_button.pack(pady=5)
 
+# Unique Feature: Adding a Quit Button
+def quit_game():
+    root.destroy()
+
+quit_button = tk.Button(root, text="Quit Game", command=quit_game, bg='#9999ff', fg='#ffffff', font=('Helvetica', 14, 'bold'), borderwidth=2, relief='raised')
+quit_button.pack(pady=5)
+
 # Start the game initially
 start_game()
 
 # Run the application
 root.mainloop()
+
